@@ -1,72 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Proyect TO-DO List</title>
-
+  <title>Lista de Tareas</title>
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-
-  <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-  <div class="container mt-4">
-    <h1 class="text-center mb-4">📌 TO-DO List</h1>
+<body class="bg-light">
 
-    <!-- Formulario -->
-    <form id="task-form" class="mb-3">
-      <input type="text" id="title" class="form-control mb-2" placeholder="Título" required>
-      <textarea id="description" class="form-control mb-2" placeholder="Descripción"></textarea>
-      <button type="submit" class="btn btn-success w-100">Agregar tarea</button>
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">📋 Lista de Tareas</h1>
+
+    <!-- Formulario para nueva tarea -->
+    <form id="taskForm" class="mb-4">
+      <div class="mb-3">
+        <label for="taskTitle" class="form-label">Título</label>
+        <input type="text" id="taskTitle" class="form-control" placeholder="Escribe el título" required>
+      </div>
+      <div class="mb-3">
+        <label for="taskDescription" class="form-label">Descripción</label>
+        <textarea id="taskDescription" class="form-control" placeholder="Escribe la descripción"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Agregar Tarea</button>
     </form>
 
-    <!-- Contador -->
-    <p id="task-counter" class="fw-bold">Tienes 0 tarea(s)</p>
-
-    <!-- Lista -->
-    <ul id="task-list" class="list-group"></ul>
+    <!-- Lista de tareas -->
+    <ul id="tasksList" class="list-group"></ul>
   </div>
 
-  <!-- Modal Ver -->
-  <div class="modal fade" id="viewModal" tabindex="-1">
+  <!-- Modal: Ver tarea -->
+  <div class="modal fade" id="viewTaskModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Ver Tarea</h5>
+        <div class="modal-header bg-info text-white">
+          <h5 class="modal-title">Detalles de la Tarea</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
-          <h6 id="viewTitle"></h6>
-          <p id="viewDesc"></p>
+          <h6 id="viewTaskTitle"></h6>
+          <p id="viewTaskDescription"></p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Modal Editar -->
-  <div class="modal fade" id="editModal" tabindex="-1">
+  <!-- Modal: Editar tarea -->
+  <div class="modal fade" id="editTaskModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header bg-warning">
           <h5 class="modal-title">Editar Tarea</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
-          <form id="edit-form">
-            <input type="text" id="editTitle" class="form-control mb-2" required>
-            <textarea id="editDesc" class="form-control mb-2"></textarea>
-            <button type="submit" class="btn btn-primary w-100">Guardar cambios</button>
-          </form>
+          <div class="mb-3">
+            <label for="editTaskTitle" class="form-label">Título</label>
+            <input type="text" id="editTaskTitle" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="editTaskDescription" class="form-label">Descripción</label>
+            <textarea id="editTaskDescription" class="form-control"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button class="btn btn-success" onclick="saveEdit()">Guardar Cambios</button>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Tu archivo JS -->
   <script src="function.js"></script>
 </body>
 </html>
