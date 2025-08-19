@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyect TO-DO List</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="container mt-4">
+    <h1 class="text-center mb-4">📌 TO-DO List</h1>
+
+    <!-- Formulario -->
+    <form id="task-form" class="mb-3">
+      <input type="text" id="title" class="form-control mb-2" placeholder="Título" required>
+      <textarea id="description" class="form-control mb-2" placeholder="Descripción"></textarea>
+      <button type="submit" class="btn btn-success w-100">Agregar tarea</button>
+    </form>
+
+    <!-- Contador -->
+    <p id="task-counter" class="fw-bold">Tienes 0 tarea(s)</p>
+
+    <!-- Lista -->
+    <ul id="task-list" class="list-group"></ul>
+  </div>
+
+  <!-- Modal Ver -->
+  <div class="modal fade" id="viewModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Ver Tarea</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <h6 id="viewTitle"></h6>
+          <p id="viewDesc"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Editar -->
+  <div class="modal fade" id="editModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Editar Tarea</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="edit-form">
+            <input type="text" id="editTitle" class="form-control mb-2" required>
+            <textarea id="editDesc" class="form-control mb-2"></textarea>
+            <button type="submit" class="btn btn-primary w-100">Guardar cambios</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="function.js"></script>
+</body>
+</html>
