@@ -27,11 +27,9 @@ function saveTasks(tasks) {
 function renderTasks() {
   const tasks = getTasks();
   tasksList.innerHTML = "";
-
   tasks.forEach((task, index) => {
     const taskItem = document.createElement("li");
     taskItem.className = "list-group-item d-flex justify-content-between align-items-center";
-
     taskItem.innerHTML = `
       <div>
         <input type="checkbox" ${task.completed ? "checked" : ""} 
@@ -44,7 +42,6 @@ function renderTasks() {
         <button class="btn btn-danger btn-sm" onclick="deleteTask(${index})">Eliminar</button>
       </div>`
     ;
-
     tasksList.appendChild(taskItem);
   });
 }
@@ -52,14 +49,11 @@ function renderTasks() {
 // Agregar tarea
 taskForm.addEventListener("submit", function (e) {
   e.preventDefault();
-
   const title = document.getElementById("taskTitle").value;
   const description = document.getElementById("taskDescription").value;
-
   const tasks = getTasks();
   tasks.push({ title, description, completed: false });
   saveTasks(tasks);
-
   taskForm.reset();
   renderTasks();
 });
@@ -68,7 +62,6 @@ taskForm.addEventListener("submit", function (e) {
 function viewTask(index) {
   const tasks = getTasks();
   const task = tasks[index];
-
   viewTitle.textContent = task.title;
   viewDescription.textContent = task.description;
   viewModal.show();
@@ -78,11 +71,9 @@ function viewTask(index) {
 function editTask(index) {
   const tasks = getTasks();
   const task = tasks[index];
-
   editTitle.value = task.title;
   editDescription.value = task.description;
   editIndex = index;
-
   editModal.show();
 }
 
@@ -92,7 +83,6 @@ function saveEdit() {
   tasks[editIndex].title = editTitle.value;
   tasks[editIndex].description = editDescription.value;
   saveTasks(tasks);
-
   editModal.hide();
   renderTasks();
 }
