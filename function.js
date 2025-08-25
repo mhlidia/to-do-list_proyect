@@ -27,14 +27,21 @@ function saveTasks(tasks) {
 function renderTasks() {
   const tasks = getTasks();
   tasksList.innerHTML = "";
+
   tasks.forEach((task, index) => {
     const taskItem = document.createElement("li");
     taskItem.className = "list-group-item d-flex justify-content-between align-items-center";
+    
+    const completedStyle = task.completed
+      ? 'style="text-decoration: line-through; color: gray; opacity: .75;"'
+      : "";
+
     taskItem.innerHTML = `
       <div>
-        <input type="checkbox" ${task.completed ? "checked" : ""} 
-          onclick="toggleComplete(${index})">
-        <strong>${task.title}</strong> - <small>${task.description}</small>
+        <input type="checkbox" ${task.completed ? "checked" : ""} onclick="toggleComplete(${index})">
+        <span ${completedStyle}>
+          <strong>${task.title}</strong> - <small>${task.description}</small>
+        </span>
       </div>
       <div>
         <button class="btn btn-info btn-sm me-2" onclick="viewTask(${index})">Ver</button>
@@ -42,6 +49,7 @@ function renderTasks() {
         <button class="btn btn-danger btn-sm" onclick="deleteTask(${index})">Eliminar</button>
       </div>`
     ;
+
     tasksList.appendChild(taskItem);
   });
 }

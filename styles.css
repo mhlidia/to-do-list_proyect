@@ -5,8 +5,3 @@
   font-size: 0.9rem;
   color: #555;
 }
-.completed .task-title,
-.completed .task-desc {
-  text-decoration: line-through;
-  color: gray;
-}
